@@ -1,0 +1,8 @@
+{
+  "python.pythonPath": "C:\\Users\\62406\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+  "_python.linting.pylintArgs": [
+    "--errors-only",
+    "--disable=E0401"
+  ],
+  "python.formatting.provider": "black",
+}
