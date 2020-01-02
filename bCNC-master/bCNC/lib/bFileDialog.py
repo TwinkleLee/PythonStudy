@@ -682,12 +682,12 @@ class FileDialog(Toplevel):
 			# lambda e,s=self: s.run()
 		# 	master.run()
 
-		# if master:#troncell
-		# 		def masterRun():
-		# 				print(master,"to run")
-		# 				master.run()
-		# 		timer = threading.Timer(1, masterRun)
-		# 		timer.start()
+		if master:#troncell
+				def masterRun():
+						print(master,"to run")
+						master.run()
+				timer = threading.Timer(1, masterRun)
+				timer.start()
 
 	# ----------------------------------------------------------------------
 	# Open the filename entered in the entry box
