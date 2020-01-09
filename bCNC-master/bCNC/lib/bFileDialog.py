@@ -55,6 +55,8 @@ except ImportError:
 	import tkinter.messagebox as messagebox
 import tkExtra
 
+import toncellTest#troncell
+
 _DIR_TYPE     = " <DIR>"
 _FILE_TYPE    = "-file-"
 _LINK_TYPE    = "-link-"
@@ -361,7 +363,7 @@ class FileDialog(Toplevel):
 		self._historyOldLen = len(_history)
 
 	# ----------------------------------------------------------------------
-	def show(self,master=None):
+	def show(self,master=None):#troncell
 		self.deiconify()
 		if FileDialog.width > 0:
 			self.geometry("%dx%d" \
@@ -376,7 +378,11 @@ class FileDialog(Toplevel):
 			self.wait_visibility()
 			self.grab_set()
 
-			self.open("",master=master)#troncell
+			# self.open("sample.gcode")#troncell
+			print("before open")
+			print(toncellTest.filePath)
+			self.open(toncellTest.filePath)#troncell
+	 
 				
 			self.wait_window()
 		except TclError:
@@ -626,7 +632,7 @@ class FileDialog(Toplevel):
 		FileDialog.sort = self.fileList.saveSort()
 
 	# ----------------------------------------------------------------------
-	def open(self, fn, master=None):#troncell
+	def open(self, fn):
 		if self.seldir and self.path == fn:
 			self.selFile = self.path
 
@@ -634,8 +640,9 @@ class FileDialog(Toplevel):
 		elif fn.find('","')<0:
 			# Check for path
 			try:
-				# filename = os.path.join(self.path, fn)
-				filename = os.path.join('./tests/troncell/','sample.gcode')#troncell
+				print(self.path,os.getcwd())#troncell
+				print("fn",fn)#troncell
+				filename = os.path.join(self.path, fn)
 				print("filename",filename)#troncell
 				s = os.stat(filename)
 				if S_ISDIR(s[ST_MODE]):
@@ -677,17 +684,6 @@ class FileDialog(Toplevel):
 				del _history[self._historyOldLen:]
 			append2History(self.path)
 			self.close()
-
-		# if master:#troncell
-			# lambda e,s=self: s.run()
-		# 	master.run()
-
-		if master:#troncell
-				def masterRun():
-						print(master,"to run")
-						master.run()
-				timer = threading.Timer(1, masterRun)
-				timer.start()
 
 	# ----------------------------------------------------------------------
 	# Open the filename entered in the entry box
@@ -951,9 +947,7 @@ def askfilename(**options):
 def askopenfilename(**options):
 	"""Ask for a filename to open"""
 	if FileDialog._active: return ""
-	print('options["master"]',options["master"])
-	# return OpenDialog(**options).show()
-	return OpenDialog(**options).show(options["master"])#troncell
+	return OpenDialog(**options).show()
 
 
 def askopenfilenames(**options):

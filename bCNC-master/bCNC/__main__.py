@@ -72,14 +72,6 @@ from ProbePage    import ProbePage
 from EditorPage   import EditorPage
 
 
-#==============================================================================
-#troncell
-#==============================================================================
-
-# from troncell     import troncell
-# import toncellTest
-# print(toncellTest.__doc__)
-# toncellTest.polling()
 
 
 _openserial = True	# override ini parameters
@@ -486,10 +478,6 @@ class Application(Toplevel,Sender):
 			filename = Utils.getRecent(i)
 			if filename is None: break
 			bFileDialog.append2History(os.path.dirname(filename))
-
-
-		# self.loadDialog()#troncell auto loadFile
-
 
 	#-----------------------------------------------------------------------
 	def setStatus(self, msg, force_update=False):
@@ -1999,7 +1987,7 @@ class Application(Toplevel,Sender):
 	#-----------------------------------------------------------------------
 	# load dialog
 	#-----------------------------------------------------------------------
-	def loadDialog(self, event=None):
+	def loadDialog(self,event=None):#troncell
 		if self.running: return
 		filename = bFileDialog.askopenfilename(master=self,
 			title=_("Open file"), 
@@ -2007,7 +1995,10 @@ class Application(Toplevel,Sender):
 					Utils.getUtf("File", "dir"),
 					Utils.getUtf("File", "file")),
 			filetypes=FILETYPES)
-		if filename: self.load(filename)
+		if filename:
+			 self.load(filename)
+			#  self.run()#troncell
+		
 		return "break"
 
 	#-----------------------------------------------------------------------
@@ -2321,7 +2312,6 @@ class Application(Toplevel,Sender):
 		self.bufferbar.configText(fill="White")
 		self.bufferbar.config(background="DarkGray")
 		self.bufferbar.setText("")
-		print("troncell test")#troncell
 
 	#-----------------------------------------------------------------------
 	# Start the web pendant
@@ -2696,6 +2686,24 @@ def main(args=None):
 
 	# Start application
 	application = Application(tk)
+
+	application.open("hwgrep://USB",115200)#troncell
+
+	#==============================================================================
+	#troncell
+	#==============================================================================
+	# from troncell     import troncell
+	import toncellTest
+	print(toncellTest.__doc__)
+
+	toncellTest.app = application
+	
+	toncellTest.initNum()
+	toncellTest.initColor()
+	toncellTest.polling()
+	toncellTest.initBtn()
+	# application.loadDialog()#troncell
+
 	if fullscreen: application.attributes("-fullscreen", True)
 
 	# Parse remaining arguments except files
@@ -2724,6 +2732,7 @@ def main(args=None):
 
 	application.close()
 	Utils.saveConfiguration()
+
 
 
 if __name__ == "__main__":
