@@ -21,7 +21,7 @@ colorDict = {
 }
 colorTuple = tuple(map(lambda item: colorDict[item], colorDict))
 
-hz = 250
+hz = 100
 positiveDict = {
     "ones": 5,
     "tens": 10
@@ -32,7 +32,8 @@ pointDict = {
     2: 13,
     3: 15,
     4: 16,
-    5: 7,
+    # 5: 7,#3代
+    5: 32,#4代
     6: 18,
     7: 22,
     8: 29,
@@ -103,12 +104,17 @@ def polling():
 
 
 def showNum():
-    showSingleNum(orderCount, "ones")
-    timerTens = threading.Timer(1/hz/2, showSingleNum, [orderCount, "tens"])
-    timer = threading.Timer(1/hz, showNum)
-    timerTens.start()
-    timer.start()
-
+    # timerTens = threading.Timer(1/hz/2, showSingleNum, [orderCount, "tens"])
+    # timer = threading.Timer(1/hz, showNum)
+    # timerTens.start()
+    # timer.start()
+    # time.sleep(1/hz/2)
+    while True:
+        showSingleNum(orderCount, "ones")
+        time.sleep(1/hz)
+        showSingleNum(orderCount, "tens")
+        time.sleep(1/hz)
+    # showNum()
 
 def showSingleNum(targetNum, positive):
     GPIO.output(pointTuple, GPIO.LOW)
@@ -127,7 +133,9 @@ def showSingleNum(targetNum, positive):
 
 def initNum():
     GPIO.setup(pointTuple, GPIO.OUT)
-    showNum()
+    # showNum()
+    t = threading.Thread(target=showNum)
+    t.start()
 
 
 def getColor():

@@ -64,10 +64,17 @@
 #     print('一共用时：', time.time()-s_time)
 
 
-import threading
+# import threading
 
-def fn(num=50):
-    print(threading.current_thread().name, num)
-t = threading.Thread(target=fn, args=[100], name='LoopThread')
-t.start()
+# def fn(num=50):
+#     print(threading.current_thread().name, num)
+# t = threading.Thread(target=fn, args=[100], name='LoopThread')
+# t.start()
+# fn()
+import time
+def fn():
+    while True:
+        time.sleep(0.001)
+        print(1)
+
 fn()
