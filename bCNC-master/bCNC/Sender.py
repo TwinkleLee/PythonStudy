@@ -639,6 +639,7 @@ class Sender:
 	def jobDone(self):
 		print("Job done. Purging the controller. (Running: %s)"%(self.running))
 		print("time to callback")#troncell
+		self.troncellCallback()
 		self.purgeController()
 		
 		
@@ -650,12 +651,17 @@ class Sender:
 	#----------------------------------------------------------------------
 	def controllerStateChange(self, state):
 		print("Controller state changed to: %s (Running: %s)"%(state, self.running))
+
+		print(self._gcount,self._runLines)
+		if self._gcount>10 and self._gcount+10>= self._runLines:
+			self.running = False
 		if state in ("Idle"):
 			self.mcontrol.viewParameters()
 			self.mcontrol.viewState()
-
+		print(self.cleanAfter,self.running,state in ("Idle"))
 		if self.cleanAfter == True and self.running == False and state in ("Idle"):
 			self.cleanAfter = False
+			print('job Done')
 			self.jobDone()
 
 	#----------------------------------------------------------------------

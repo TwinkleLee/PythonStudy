@@ -83,7 +83,7 @@ def changeColor(color):
 
 def polling():
     res = requests.get(
-        r'https://o.api.troncell.com/api/services/app/OrderExtension/GetPrintOrderCount', headers={"tenantId": "5056"})
+        r'https://o.api.troncell.com/api/services/app/OrderExtension/GetPrintOrderCount', headers={"tenantId": "5056",'type':'4'})
     try:
         res.raise_for_status()
     except BaseException as e:
@@ -156,7 +156,7 @@ def detectClick(chn):
         changeColor("Red")
         # startLaser("gcode50.nc")
         res = requests.get(
-            r'https://o.api.troncell.com/api/services/app/OrderExtension/GetNextOrderGcodeFile', headers={"tenantId": "5056"})
+            r'https://o.api.troncell.com/api/services/app/OrderExtension/GetNextOrderGcodeFile', headers={"tenantId": "5056","type":"4   fvdddddddddddddddddd"})
         try:
             res.raise_for_status()
         except BaseException as e:

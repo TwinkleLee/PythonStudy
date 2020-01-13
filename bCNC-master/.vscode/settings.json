@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "C:\\Users\\62406\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+  "python.pythonPath": "/usr/bin/python3",
   "_python.linting.pylintArgs": [
     "--errors-only",
     "--disable=E0401"

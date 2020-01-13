@@ -252,6 +252,13 @@ gcodeSender.open("hwgrep://USB",115200)
 # print("Press any key to exit.")
 # key = input()
 
+
+# from ControlPage import ControlPage,DROFrame
+# DROFrame().setXYZ0()
+# gcodeSender.setXYZ0()
+
+
+
 import toncellTest
 toncellTest.app=gcodeSender
 toncellTest.initNum()

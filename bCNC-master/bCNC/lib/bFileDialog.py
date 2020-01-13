@@ -55,7 +55,7 @@ except ImportError:
 	import tkinter.messagebox as messagebox
 import tkExtra
 
-import toncellTest#troncell
+# import toncellTest#troncell
 
 _DIR_TYPE     = " <DIR>"
 _FILE_TYPE    = "-file-"
@@ -371,17 +371,26 @@ class FileDialog(Toplevel):
 
 		self.buttonPath(self.path)
 		self.typeCombo.set(self.typeCombo.get(0))	# will fill the files
+
+		print("before open")
+		# print(toncellTest.filePath)
+			
 		try:
+
 			self.lift()
 			self.focus_set()
+
 			self.fileList.focus_set()
+
+			# self.open(toncellTest.filePath)#troncell
+
 			self.wait_visibility()
+
 			self.grab_set()
 
 			# self.open("sample.gcode")#troncell
-			print("before open")
-			print(toncellTest.filePath)
-			self.open(toncellTest.filePath)#troncell
+
+
 	 
 				
 			self.wait_window()

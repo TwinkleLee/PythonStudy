@@ -1997,7 +1997,7 @@ class Application(Toplevel,Sender):
 			filetypes=FILETYPES)
 		if filename:
 			 self.load(filename)
-			#  self.run()#troncell
+			 self.run()#troncell
 		
 		return "break"
 
@@ -2693,15 +2693,15 @@ def main(args=None):
 	#troncell
 	#==============================================================================
 	# from troncell     import troncell
-	import toncellTest
-	print(toncellTest.__doc__)
+	# import toncellTest
+	# print(toncellTest.__doc__)
 
-	toncellTest.app = application
+	# toncellTest.app = application
 	
-	toncellTest.initNum()
-	toncellTest.initColor()
-	toncellTest.polling()
-	toncellTest.initBtn()
+	# toncellTest.initNum()
+	# toncellTest.initColor()
+	# toncellTest.polling()
+	# toncellTest.initBtn()
 	# application.loadDialog()#troncell
 
 	if fullscreen: application.attributes("-fullscreen", True)
