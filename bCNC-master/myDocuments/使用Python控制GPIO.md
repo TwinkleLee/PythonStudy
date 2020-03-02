@@ -1,11 +1,16 @@
 # Python
+![python](python_logo.jpg)
 
 Python是Guido van Rossum 在1989年圣诞节期间，在阿姆斯特丹，为了打发时间，所开发的一个解释型语言。
 
 ##### 基础特性
-* 解释型(.pyc文件)
+* 解释型(.pyc文件) 
+    * 简明易懂，注重实用
+    * 跨平台
 * 强类型
+    * 严谨
 * 动态类型
+    * 对于其他语言模块的引用支持度高(胶水语言)
 
 ##### 发展状况
 * [是当前仅次于Java和C的流行度排名第三的编程语言](https://www.tiobe.com/tiobe-index/)
