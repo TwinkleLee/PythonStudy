@@ -155,7 +155,7 @@ def detectClick(chn):
         changeColor("Red")
         # startLaser("gcode50.nc")
         res = requests.get(
-            r'https://o.api.troncell.com/api/services/app/OrderExtension/GetNextOrderGcodeFile', headers={"tenantId": "5056","type":"4   fvdddddddddddddddddd"})
+            r'https://o.api.troncell.com/api/services/app/OrderExtension/GetNextOrderGcodeFile', headers={"tenantId": "5056","type":"4"})
         try:
             res.raise_for_status()
         except BaseException as e:
@@ -167,6 +167,7 @@ def detectClick(chn):
             resDict = res.json()
             res = requests.get(resDict["result"])
             fileName = resDict["result"].split("/")[-1]
+            print("fileName",fileName)
             global nowOrderId
             nowOrderId = int(fileName.split(".")[-2])
             with open(fileName, 'wb') as activeFile:
